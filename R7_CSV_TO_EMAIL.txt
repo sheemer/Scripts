@@ -1,0 +1,17 @@
+$user = import-csv -Path 'C:\Users\**\Documents\time.csv'
+
+$file = Get-Content C:\Users\**\Documents\time.csv
+
+$file | Foreach {$_ -replace "*", ""} | Foreach {$_ -replace "*", ""} | Foreach {$_ -replace "*", ""} | Foreach {$_ -replace "1", ""} | Foreach {$_ -replace "2", ""} | Foreach {$_ -replace "3", ""} | Foreach {$_ -replace "4", ""} | Set-Content "user.csv"
+
+$filedone = import-csv -Path C:\users\**\user.csv
+
+$email = $filedone.name | foreach {$_ + "*"}
+
+$proof =  $filedone.Proof
+
+Send-MailMessage -from ** -To $email -Subject 'Please fix attached' -Body 'Hello attached is a list of what you device is vulnerable with if you can fix'+ $filedone.Proof
+
+Send-MailMessage -from ** -To $email -Subject 1 -body "Please let me know if recived" -SmtpServer ** -Credential **-Port 587 -UseSsl
+
+$user | ft Name,Proof > C:\Users\**\Documents\user.csv
